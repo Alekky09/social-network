@@ -1,0 +1,72 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="profile-header">
+        <div>
+            <span class="profile-username">{{ profile.username }}</span>
+            {% if user.is_authenticated and user != profile %}
+            <button id="follow">
+                {% if is_followed %}
+                Unfollow
+                {% else %}
+                Follow
+                {% endif %}
+            </button>
+            {% endif %}
+        </div>
+        <span>Followers: <span id="followers">{{ profile.followers.count }}</span></span>
+        <br>
+        <span>Following: <span id="following">{{ following }}</span></span>
+    </div>
+    
+    {% for post in posts %}
+    <div class="post" id="{{ post.id }}">
+        <div class="post-header">
+            <a href="{% url 'profile' post.poster.id %}">{{ post.poster }}</a>
+            <span>{{ post.timestamp }}</span>
+            {% if post.poster == user %}
+            <button onclick="edit(this)" class="edit-button">Edit</button>
+            <button onclick="saveEdit(this)" class="save-button" hidden>Save</button>
+            {% endif %}
+        </div>
+        <div class="post-content">
+        {{ post.content }}
+        </div>
+        {% if post.poster == user %}
+        <textarea hidden>{{ post.content }}</textarea>
+        {% endif %}
+        <div class="post-likes">
+        Number of likes: <span>{{ post.likes }}</span>
+        {% if user.is_authenticated and user != post.poster %}
+        <ion-icon name="{% if post.user_set.all %}heart{% else %}heart-outline{% endif %}"></ion-icon>
+        {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if posts.paginator.num_pages > 1 %}
+    <div class="pagination">
+        <span class="step-links">
+
+        {% if posts.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+        
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next</a>
+        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+        </span>
+    </div>
+</div>
+{% endif %}
+<script>
+    var csrftoken = '{{ csrf_token }}';
+</script>
+{% endblock %}

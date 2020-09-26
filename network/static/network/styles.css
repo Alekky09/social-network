@@ -1,0 +1,190 @@
+:root{
+    --main-background-gradient1: rgba(182,58,185,1);
+    --main-background-gradient2: rgba(24,35,78,1);
+    --logout: rgb(231, 59, 102);
+    --content-background-color: rgb(155, 182, 233);
+}
+
+body{
+    background: linear-gradient(34deg, var(--main-background-gradient1) 4%, var(--main-background-gradient2) 39%);
+    font-family: 'Roboto', sans-serif; 
+    min-height: 100vh;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(3deg, var(--main-background-gradient1) 0%, var(--main-background-gradient2) 7%);
+}
+.navbar-brand{
+    color: rgb(255, 255, 255) !important;
+}
+nav .nav-link{
+    color: rgb(224, 67, 245) !important;
+    border: 1px solid transparent;
+    transition-duration: 0.5s;
+}
+nav .nav-link:hover{
+    border: 1px solid rgb(255, 157, 242);
+    color: white !important;
+}
+.container{
+    background-color: transparent;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+ion-icon{
+    cursor: pointer;
+}
+ion-icon:hover{
+    color: var(--logout);
+}
+.logout-button{
+    display: block;
+    transition-duration: 0.5s;
+    color: var(--logout);
+    margin-left: auto;
+}
+.logout-button:hover{
+    background: linear-gradient(214deg, var(--logout) 3%, var(--main-background-gradient1) 10%, var(--main-background-gradient2) 60%);
+    color: white !important;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+form div{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+form input{
+    color: white;
+    border: none;
+    border-bottom: 1px solid rgb(70, 128, 204);
+    padding-left: 5px;
+    flex-grow: 1;
+    background-color: transparent;
+    transition-duration: 1s;
+}
+form input:focus{
+    border-bottom: 1px solid var(--main-background-gradient1);
+}
+form input::placeholder{
+    color: rgb(70, 128, 204);
+}
+form input:focus::placeholder{
+    color: var(--main-background-gradient2);
+}
+form button, #follow, .log-in-button, .post-header button{
+    background-color: var(--logout);
+    border: none;
+    border-radius: 2px;
+    margin-left: 10px;
+    transition-duration: 0.5s;
+    color: var(--main-background-gradient2);
+}
+form button:hover, #follow:hover, .log-in-button:hover{
+    color: white;
+}
+.post{
+    min-height: 100px;
+    margin-bottom: 10px;
+    background-color: rgba(205, 196, 216, 0.3);
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+.post-header{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.post-header a{
+    text-decoration: none;
+    color: rgb(219, 219, 219);
+    font-weight: 500;
+    transition-duration: 0.4s;
+}
+.post-header a:hover{
+    color: white;
+}
+.post-header span{
+    font-size: 12px;
+    margin-left: 20px;
+    color: rgb(224, 223, 223);
+}
+.post-content{
+    flex-grow: 1;
+    border-bottom: 1px solid rgb(175, 175, 175);
+    margin-top: 5px;
+    color: rgb(219, 219, 219);
+}
+.post-likes{
+    align-self: flex-end;
+    margin-right: 10px;
+    color:  rgb(224, 223, 223);
+}
+.profile-header{
+    margin-top: 10px;
+    box-shadow: 0px 7px 5px -6px rgba(255,48,255,1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.profile-username{
+    font-size: 24px;
+    color: white !important;
+}
+.profile-header span{
+    color: rgb(250, 78, 184);
+}
+.pagination{
+    color: rgb(223, 223, 223);
+}
+.step-links a{
+    color: rgb(95, 159, 241);
+}
+.step-links a:hover{
+    color: rgb(168, 216, 255);
+    text-decoration: none;
+}
+.error, .log-in-error{
+    color: rgb(253, 82, 82);
+    font-size: 30px;
+}
+.log-in-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.log-in-footer span{
+    margin-left: auto;
+    color: white;
+}
+.log-in-button{
+    flex-grow: 0;
+}
+.post-header .edit-button{
+    background-color: var(--logout);
+    border: none;
+    border-radius: 2px;
+    margin-left: auto !important;
+    transition-duration: 0.5s;
+    color: var(--main-background-gradient2);
+}
+.save-button{
+    margin-left: 5px !important;
+    transition-duration: 0.5s;
+}
+.save-button:hover, .edit-button:hover{
+    color: white;
+}

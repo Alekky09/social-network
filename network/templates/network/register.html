@@ -1,0 +1,22 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="container">
+    {% if message %}
+    <div class="log-in-error">{{ message }}</div>
+    {% endif %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="log-in-form">
+            <input autofocus type="text" name="username" placeholder="Username">
+            <input type="email" name="email" placeholder="Email Address">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <div class="log-in-footer">
+            <input class="log-in-button" type="submit" value="Register">
+            <span>Already have an account? <a href="{% url 'login' %}">Log In here.</a></span>
+        </div>
+    </form>
+</div>
+{% endblock %}
